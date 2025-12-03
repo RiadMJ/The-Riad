@@ -77,10 +77,10 @@
         
         <div class="gallery-grid">
             
-            <div class="art-card reveal-card">
-                <img src="https://images.unsplash.com/photo-1549488344-93be8e56b377?q=80&w=1000&auto=format&fit=crop" alt="Riad & Ela at Morty's">
+            <a href="pages/comic.html" class="art-card reveal-card">
+                <img src="assets/img/morty.png" alt="Riad & Ela at Morty's">
                 <div class="overlay"><h3>Riad & Ela at Morty's</h3><p>Comic</p></div>
-            </div>
+            </a>
 
             <div class="art-card reveal-card">
                 <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop" alt="Song writing & DA">
@@ -92,10 +92,10 @@
                 <div class="overlay"><h3>Dévelloppement informatique</h3><p>Java / Python / ISIS</p></div>
             </div>
 
-            <div class="art-card reveal-card">
-                <img src="https://images.unsplash.com/photo-1557008075-7f2c53df28d5?q=80&w=1000&auto=format&fit=crop" alt="Développement personnel">
+            <a href="pages/developpement_perso.html" class="art-card reveal-card">
+                <img src="assets/img/riad.jpeg" alt="Développement personnel">
                 <div class="overlay"><h3>Développement personnel</h3><p>Mindset / Progrès</p></div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -117,7 +117,10 @@
 
     <script>
         const reveals = document.querySelectorAll('.reveal, .reveal-card');
+        const burger = document.querySelector('.burger-menu');
+        const navLinks = document.querySelector('.nav-links');
 
+        // Fonction Scroll Reveal
         function scrollReveal() {
             const windowHeight = window.innerHeight;
             const elementVisible = 150; 
@@ -131,8 +134,26 @@
             }
         }
 
+        // Fonction Burger Menu (pour le mobile)
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            burger.querySelector('i').classList.toggle('fa-bars');
+            burger.querySelector('i').classList.toggle('fa-times'); // Optionnel, si vous voulez un X à la place
+        });
+
+        // Fermer le menu après un clic de lien (mobile)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    burger.querySelector('i').classList.add('fa-bars');
+                    burger.querySelector('i').classList.remove('fa-times');
+                }
+            });
+        });
+
         window.addEventListener("scroll", scrollReveal);
-        scrollReveal(); // Déclenche au chargement
+        window.addEventListener("load", scrollReveal); // Déclenche au chargement
     </script>
 
 </body>
