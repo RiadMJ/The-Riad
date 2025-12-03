@@ -23,16 +23,6 @@ body {
     overflow-x: hidden;
 }
 
-/* SCROLLBAR CUSTOM */
-body::-webkit-scrollbar { width: 8px; }
-body::-webkit-scrollbar-track { background: var(--bg-color); }
-body::-webkit-scrollbar-thumb { 
-    background-color: var(--accent-color); 
-    border-radius: 10px; 
-    border: 2px solid var(--bg-color); 
-    box-shadow: 0 0 5px var(--accent-color);
-}
-
 /* --- BACKGROUND ANIMATION & NOISE --- */
 .background-animation {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; background: #050505;
@@ -58,13 +48,7 @@ body::-webkit-scrollbar-thumb {
     100% { transform: translate(0, 0) scale(1); }
 }
 
-/* NOUVEAU : XO STAMP */
-.xo-stamp {
-    position: fixed; bottom: 20px; left: 20px; font-size: 1.2rem; font-weight: 800; color: var(--accent-color); opacity: 0.2; letter-spacing: 5px; z-index: 10; pointer-events: none;
-    text-shadow: 0 0 10px rgba(255, 77, 0, 0.8);
-}
-
-/* --- NAVBAR & HERO (styles inchangés sauf pour le titre) --- */
+/* --- NAVBAR & HERO --- */
 .navbar { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 .logo { text-decoration: none; color: white; font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
 .dot { color: var(--accent-color); }
@@ -74,6 +58,7 @@ body::-webkit-scrollbar-thumb {
 .cta-btn { border: 1px solid rgba(255, 255, 255, 0.2); padding: 10px 25px; border-radius: 30px; transition: all 0.3s ease; }
 .cta-btn:hover { background: var(--accent-color); border-color: var(--accent-color); color: white !important; box-shadow: 0 0 20px rgba(255, 77, 0, 0.4); }
 
+/* ANIMATION NEON GLOW SUR LE TITRE */
 @keyframes neon-pulse {
     from { text-shadow: 0 0 6px rgba(255, 77, 0, 0.3), 0 0 12px rgba(255, 77, 0, 0.2); }
     to { text-shadow: 0 0 10px rgba(255, 77, 0, 0.6), 0 0 20px rgba(255, 77, 0, 0.5); }
@@ -100,19 +85,11 @@ h1 {
 .progress-bar-container { width: 100%; height: 10px; background-color: #222; border-radius: 5px; overflow: hidden; }
 .progress-bar { height: 100%; background: linear-gradient(to right, #e83300, var(--accent-color)); border-radius: 5px; text-align: right; padding-right: 5px; color: var(--bg-color); font-size: 0.7rem; font-weight: 700; line-height: 10px; transition: width 1.5s ease; }
 
-/* --- SECTION PROJETS (Amélioration des ombres) --- */
+/* --- SECTION PROJETS --- */
 .work-section { padding: 100px 10%; background-color: var(--bg-color); }
 .section-title { font-size: 2rem; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px; border-left: 4px solid var(--accent-color); padding-left: 20px; }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.art-card { 
-    position: relative; height: 400px; border-radius: 16px; overflow: hidden; cursor: pointer; background: #111; 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Ombre de base */
-    transition: box-shadow 0.4s ease, transform 0.4s ease;
-}
-.art-card:hover { 
-    box-shadow: 0 15px 30px rgba(255, 77, 0, 0.2), 0 5px 10px rgba(0,0,0,0.8); /* Ombre plus intense + lueur */
-    transform: translateY(-5px); /* Lift 3D subtil */
-}
+.art-card { position: relative; height: 400px; border-radius: 16px; overflow: hidden; cursor: pointer; background: #111; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); }
 .art-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); filter: grayscale(30%) brightness(0.7); }
 .overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: opacity 0.4s ease; }
 .overlay h3 { font-size: 1.5rem; font-weight: 700; transform: translateY(20px); transition: transform 0.4s ease; }
@@ -121,38 +98,21 @@ h1 {
 .art-card:hover .overlay { opacity: 1; }
 .art-card:hover .overlay h3, .art-card:hover .overlay p { transform: translateY(0); }
 
-
-/* --- FOOTER & NOUVEAUX ÉLÉMENTS FIXES --- */
+/* --- FOOTER & RESPONSIVE --- */
 footer { padding: 80px 10%; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: linear-gradient(to bottom, #0a0a0a, #050505); }
+.copyright { font-size: 0.8rem; opacity: 0.5; }
 
-/* NOUVEAU : BOUTON HAUT DE PAGE */
-.scroll-to-top {
-    position: fixed; right: 25px; bottom: 25px; width: 45px; height: 45px; background: var(--accent-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; z-index: 99; opacity: 0; transition: opacity 0.4s ease; cursor: pointer;
-    box-shadow: 0 0 15px rgba(255, 77, 0, 0.6);
-}
-
-/* --- SCROLL REVEAL & ANIMATIONS --- */
+/* SCROLL REVEAL & ANIMATIONS */
 .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 .reveal-card { opacity: 0; transform: scale(0.95); transition: all 0.8s ease-out; }
 .reveal-card.active { opacity: 1; transform: scale(1); }
 
-
-/* --- RESPONSIVE MOBILE --- */
-@media (max-width: 900px) {
-    .about-content { flex-direction: column; }
-    .bio-text { max-width: 100%; }
-    .skills-grid { max-width: 100%; }
-}
+@media (max-width: 900px) { .about-content { flex-direction: column; } .bio-text { max-width: 100%; } .skills-grid { max-width: 100%; } }
 @media (max-width: 768px) {
-    /* Cache les éléments superflus pour le mobile */
-    .xo-stamp, .scroll-to-top { display: none !important; }
-
-    .nav-links { display: none; }
-    .burger-menu { display: block; }
+    .nav-links { display: none; } .burger-menu { display: block; }
     .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; height: auto; }
-    h1 { font-size: 3rem; }
-    .hero-btns { justify-content: center; }
+    h1 { font-size: 3rem; } .hero-btns { justify-content: center; }
     .profile-img, .aura-glow { width: 280px; height: 360px; }
     .about-section { padding: 80px 5%; }
 }
