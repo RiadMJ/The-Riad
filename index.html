@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riad Malki | Portfolio</title>
+    <title>Riad Malki | Portfolio XO</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
     <div class="noise-overlay"></div>
@@ -32,16 +30,15 @@
         </div>
     </nav>
 
-    <header class="hero" id="home">
+    <header class="hero reveal" id="home">
         <div class="hero-content">
             <span class="greeting">Here I am,</span>
             <h1>RIAD <br> MALKI.</h1>
             <p class="subtitle">Engineering Student & Artist & Singer. <br>Passionné par l'être humain et l'art</p>
-
+            
             <div class="hero-btns">
                 <a href="#work" class="btn-primary">Voir mes travaux</a>
-                <a href="https://instagram.com" target="_blank" class="btn-secondary"><i class="fab fa-instagram"></i>
-                    Instagram</a>
+                <a href="https://instagram.com/xo_riad" target="_blank" class="btn-secondary"><i class="fab fa-instagram"></i> Instagram</a>
             </div>
         </div>
 
@@ -51,68 +48,96 @@
         </div>
     </header>
 
-    <section id="work" class="work-section">
-        <h2 class="section-title">Sélection</h2>
-
-        <div class="gallery-grid">
-
-            <div class="art-card">
-                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1000&auto=format&fit=crop"
-                    alt="Abstract Red Neon">
-                <div class="overlay">
-                    <h3>Projet Alpha</h3>
-                    <p>Java / Data Viz</p>
+    <section id="about" class="about-section reveal">
+        <h2 class="section-title">À Propos & Compétences</h2>
+        <div class="about-content">
+            <p class="bio-text">
+                Étudiant en ingénierie à ISIS Castres, je suis spécialisé dans le développement backend (Java/Python) et passionné par les interfaces utilisateur épurées et la Data Science. Mon approche est double : rigueur technique et direction artistique soignée, inspirée par une esthétique cinématographique et sombre.
+            </p>
+            
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3>Java / C</h3>
+                    <div class="progress-bar-container"><div class="progress-bar" style="width: 85%;">85%</div></div>
+                </div>
+                <div class="skill-item">
+                    <h3>Python / Data Science</h3>
+                    <div class="progress-bar-container"><div class="progress-bar" style="width: 75%;">75%</div></div>
+                </div>
+                <div class="skill-item">
+                    <h3>UI/UX & Front-end</h3>
+                    <div class="progress-bar-container"><div class="progress-bar" style="width: 60%;">60%</div></div>
+                </div>
+                <div class="skill-item">
+                    <h3>Base de données / SQL</h3>
+                    <div class="progress-bar-container"><div class="progress-bar" style="width: 70%;">70%</div></div>
                 </div>
             </div>
-
-            <div class="art-card">
-                <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?q=80&w=1000&auto=format&fit=crop"
-                    alt="Red Dark Tunnel">
-                <div class="overlay">
-                    <h3>Neon Dreams</h3>
-                    <p>Digital Art</p>
-                </div>
-            </div>
-
-            <div class="art-card">
-                <img src="https://images.unsplash.com/photo-1499578124509-1611b77778c8?q=80&w=1000&auto=format&fit=crop"
-                    alt="Red Smoke">
-                <div class="overlay">
-                    <h3>Interface UI</h3>
-                    <p>Web Design</p>
-                </div>
-            </div>
-
-            <div class="art-card">
-                <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=1000&auto=format&fit=crop"
-                    alt="Red Cyberpunk City">
-                <div class="overlay">
-                    <h3>Algo Python</h3>
-                    <p>Engineering</p>
-                </div>
-            </div>
-
         </div>
+    </section>
+    
+    <section id="work" class="work-section reveal">
+        <h2 class="section-title">Mes Axes de Création</h2>
+        
+        <div class="gallery-grid">
+            
+            <div class="art-card reveal-card">
+                <img src="https://images.unsplash.com/photo-1549488344-93be8e56b377?q=80&w=1000&auto=format&fit=crop" alt="Riad & Ela at Morty's">
+                <div class="overlay"><h3>Riad & Ela at Morty's</h3><p>Life / Réseaux</p></div>
+            </div>
 
+            <div class="art-card reveal-card">
+                <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop" alt="Song writing & DA">
+                <div class="overlay"><h3>Song writing & DA</h3><p>Art / Musique XO</p></div>
+            </div>
+
+            <div class="art-card reveal-card">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop" alt="Dévelloppement informatique">
+                <div class="overlay"><h3>Dévelloppement informatique</h3><p>Java / Python / ISIS</p></div>
+            </div>
+
+            <div class="art-card reveal-card">
+                <img src="https://images.unsplash.com/photo-1557008075-7f2c53df28d5?q=80&w=1000&auto=format&fit=crop" alt="Développement personnel">
+                <div class="overlay"><h3>Développement personnel</h3><p>Mindset / Progrès</p></div>
+            </div>
         </div>
     </section>
 
-    <footer id="contact">
+    <footer id="contact" class="reveal">
         <div class="footer-content">
-            <h2>I'd rather leave somewhat of a legacy.</h2>
-            <p>Disponible pour collaboration.</p>
-
+            <h2>I'd rather leave somewhat of a Legacy.</h2>
+            <p>Disponible pour collaboration sur projets de dev ou de design.</p>
+            
             <div class="social-links">
-                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://instagram.com/xo_riad" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:tonemail@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/RiadMJ" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:riad.malki.jamai@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
 
-            <p class="copyright">© 2025 Riad Malki Jamai.</p>
+            <p class="copyright">© 2025 Riad Malki Jamai. XO. Code by Gemini.</p>
         </div>
     </footer>
 
-</body>
+    <script>
+        const reveals = document.querySelectorAll('.reveal, .reveal-card');
 
+        function scrollReveal() {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150; 
+
+            for (let i = 0; i < reveals.length; i++) {
+                let elementTop = reveals[i].getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", scrollReveal);
+        scrollReveal(); // Déclenche au chargement
+    </script>
+
+</body>
 </html>
