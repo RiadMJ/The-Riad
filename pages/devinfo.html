@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riad Malki | Dev Info</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .project-header { padding: 150px 10% 60px; text-align: center; }
+        .project-content { padding: 50px 10%; max-width: 1000px; margin: 0 auto; }
+        .project-content h3 { color: var(--accent-color); margin-top: 40px; margin-bottom: 15px; font-size: 1.5rem; border-bottom: 1px solid rgba(255, 77, 0, 0.2); padding-bottom: 5px; display: inline-block; }
+        .project-content p, .project-content ul { color: var(--gray-text); line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+        .project-content ul { list-style: none; padding-left: 0; }
+        .project-content li { margin-bottom: 10px; position: relative; padding-left: 20px; }
+        .project-content li::before { content: "•"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold; }
+        .project-img-container { margin: 40px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .project-img-container img { width: 100%; display: block; }
+        .back-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+    <div class="background-animation"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+    
+    <header class="project-header reveal">
+        <span class="greeting">Ingénierie & Code</span>
+        <h1 style="font-size: 3.5rem;">Développement <br>Informatique.</h1>
+        <p class="subtitle">Java, Python & Data Science à ISIS Castres.</p>
+        <a href="../index.html#work" class="btn-secondary back-btn"><i class="fas fa-arrow-left"></i> Retour aux Projets</a>
+    </header>
+
+    <section class="project-content reveal">
+        <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop" alt="Coding Setup">
+        </div>
+
+        <h3>Vision Technique</h3>
+        <p>
+            Étudiant en école d'ingénieur (ISIS), mon approche du code est guidée par deux principes : la robustesse du backend et l'élégance du frontend. Je ne conçois pas une application performante sans une interface "clean" et intuitive. J'aime intégrer des effets visuels (dégradés, hover effects) même dans des applications techniques.
+        </p>
+
+        <h3>Stack & Compétences</h3>
+        <ul>
+            <li><strong>Java / IHM :</strong> Développement d'applications desktop avec une attention particulière aux interfaces graphiques modernes (Swing/JavaFX).</li>
+            <li><strong>Python & Data Science :</strong> Traitement de la donnée, nettoyage (imputation de valeurs manquantes), et visualisation (histogrammes, quartiles).</li>
+            <li><strong>Web & Design :</strong> Capacité à traduire une maquette artistique en code HTML/CSS fonctionnel, comme ce portfolio.</li>
+        </ul>
+    </section>
+
+    <footer style="padding-top: 50px; text-align: center; background: transparent;">
+        <p class="copyright">© 2025 Riad Malki Jamai. XO.</p>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        function scrollReveal() {
+            const windowHeight = window.innerHeight;
+            for (let i = 0; i < reveals.length; i++) {
+                let elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 150) reveals[i].classList.add("active");
+            }
+        }
+        window.addEventListener("scroll", scrollReveal);
+        window.addEventListener("load", scrollReveal);
+    </script>
+</body>
+</html>

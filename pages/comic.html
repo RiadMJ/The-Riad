@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riad Malki | Comic R&M</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Styles spécifiques aux pages projets */
+        .project-header { padding: 150px 10% 60px; text-align: center; }
+        .project-content { padding: 50px 10%; max-width: 1000px; margin: 0 auto; }
+        .project-content h3 { color: var(--accent-color); margin-top: 40px; margin-bottom: 15px; font-size: 1.5rem; border-bottom: 1px solid rgba(255, 77, 0, 0.2); padding-bottom: 5px; display: inline-block; }
+        .project-content p, .project-content ul { color: var(--gray-text); line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+        .project-content ul { list-style: none; padding-left: 0; }
+        .project-content li { margin-bottom: 10px; position: relative; padding-left: 20px; }
+        .project-content li::before { content: "•"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold; }
+        .project-img-container { margin: 40px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .project-img-container img { width: 100%; display: block; }
+        .back-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+    <div class="background-animation"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+    
+    <header class="project-header reveal">
+        <span class="greeting">Direction Artistique</span>
+        <h1 style="font-size: 3.5rem;">Riad & Ela <br>at Morty's.</h1>
+        <p class="subtitle">Storytelling visuel & esthétique sombre.</p>
+        <a href="../index.html#work" class="btn-secondary back-btn"><i class="fas fa-arrow-left"></i> Retour aux Projets</a>
+    </header>
+
+    <section class="project-content reveal">
+        <div class="project-img-container">
+            <img src="../assets/img/morty.jpeg" alt="Riad & Ela Comic">
+        </div>
+
+        <h3>Concept et Inspiration</h3>
+        <p>
+            Ce projet graphique est né d'une volonté de capturer une ambiance "cinématographique" figée dans le temps. Inspiré par les dynamiques de duos iconiques et l'univers visuel de séries d'animation modernes, j'ai voulu créer une scène qui raconte une histoire sans mots. L'esthétique est volontairement sombre, éclairée par des néons, rappelant la "Vibe XO".
+        </p>
+
+        <h3>Technique & Réalisation</h3>
+        <ul>
+            <li><strong>Composition :</strong> Travail sur la perspective et le placement des personnages pour suggérer une conversation intime dans un lieu public bruyant.</li>
+            <li><strong>Colorimétrie :</strong> Utilisation de contrastes forts. Les teintes chaudes (orange/rouge) viennent "popper" sur les fonds froids et sombres.</li>
+            <li><strong>Outils :</strong> Conception numérique et retouche pour l'effet de grain (noise) et de lueur (glow).</li>
+        </ul>
+    </section>
+
+    <footer style="padding-top: 50px; text-align: center; background: transparent;">
+        <p class="copyright">© 2025 Riad Malki Jamai. XO.</p>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        function scrollReveal() {
+            const windowHeight = window.innerHeight;
+            for (let i = 0; i < reveals.length; i++) {
+                let elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 150) reveals[i].classList.add("active");
+            }
+        }
+        window.addEventListener("scroll", scrollReveal);
+        window.addEventListener("load", scrollReveal);
+    </script>
+</body>
+</html>
