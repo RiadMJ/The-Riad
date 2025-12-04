@@ -116,7 +116,7 @@ h1 {
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4); } /* Effet de levée au survol */
 
 .btn-secondary { 
-    padding: 18px 40px; border: 1px solid rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 50px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; 
+    padding: 18px 40px; border: 1px solid rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 50px; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; 
 }
 .btn-secondary:hover { background: white; color: black; }
 
@@ -148,7 +148,7 @@ section { padding: var(--section-padding); /* Utilise la variable définie tout 
 /* Le texte de description */
 .bio-text { 
     flex: 1;
-    font-size: 2rem; /* Taille du texte "À propos" */
+    font-size: 1.5rem; /* Taille du texte "À propos" */
     line-height: 1.7; 
     color: var(--gray-text);
     max-width: 500px; 
@@ -159,7 +159,7 @@ section { padding: var(--section-padding); /* Utilise la variable définie tout 
 
 /* Titre des compétences (Java, Python...) */
 .skill-item h3 { 
-    font-size: 1.2rem; 
+    font-size: 1.5rem; 
     margin-bottom: 5px; 
     color: white;
     font-weight: 600;
@@ -192,7 +192,7 @@ section { padding: var(--section-padding); /* Utilise la variable définie tout 
     
     /* C'est ICI qu'on fait flotter le texte */
     position: relative; 
-    top: -60px; /* Valeur négative = monte le texte de 60px vers le haut */
+    top: -120px; /* Valeur négative = monte le texte de 60px vers le haut */
     line-height: 1;
 }
 
