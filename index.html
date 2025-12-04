@@ -7,6 +7,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* CSS Ajouté pour les nouveaux blocs "Passions" */
+        .personal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .personal-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 3px solid var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+        .personal-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .personal-card h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .personal-card p {
+            font-size: 0.95rem;
+            color: var(--gray-text);
+        }
+        /* Responsive pour les nouveaux blocs */
+        @media (max-width: 768px) {
+            .personal-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
@@ -38,7 +73,7 @@
             
             <div class="hero-btns">
                 <a href="#work" class="btn-primary">Voir mes travaux</a>
-                <a href="https://instagram.com/xo_riad" target="_blank" class="btn-secondary"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.instagram.com/riad_mjamai/" target="_blank" class="btn-secondary"><i class="fab fa-instagram"></i> Instagram</a>
             </div>
         </div>
 
@@ -50,6 +85,7 @@
 
     <section id="about" class="about-section reveal">
         <h2 class="section-title">À Propos & Compétences</h2>
+        
         <div class="about-content">
             <p class="bio-text">
                 Étudiant en ingénierie à ISIS Castres, je suis spécialisé dans le développement backend (Java/Python) et passionné par les interfaces utilisateur épurées et la Data Science. Mon approche est double : rigueur technique et direction artistique soignée, inspirée par une esthétique cinématographique et sombre.
@@ -70,6 +106,23 @@
                 </div>
             </div>
         </div>
+
+        <div class="personal-grid">
+            <div class="personal-card reveal-card">
+                <h3><i class="fas fa-user-friends" style="color:var(--accent-color); margin-right:10px;"></i> Lifestyle & XO</h3>
+                <p>
+                    Au-delà du code, je suis quelqu'un de très social. Mon quotidien est rythmé par mon entourage proche (le fameux "quadruplet") et une ambiance toujours animée. J'aime cultiver une esthétique sombre et soignée, inspirée de l'univers <strong>The Weeknd (XO)</strong>, que ce soit dans ma musique, mon style vestimentaire ou mes projets créatifs.
+                </p>
+            </div>
+            
+            <div class="personal-card reveal-card">
+                <h3><i class="fas fa-futbol" style="color:var(--accent-color); margin-right:10px;"></i> Fan de Chelsea</h3>
+                <p>
+                    Grand supporter des <strong>Blues de Chelsea</strong>. Pour moi, le foot est plus qu'un sport, c'est une passion viscérale. J'aime suivre la Premier League et débattre (souvent bruyamment) des performances du week-end, surtout quand il s'agit de défendre mon club contre les fans de Manchester United ou d'autres rivaux. <em>Blue is the colour.</em>
+                </p>
+            </div>
+        </div>
+
     </section>
     
     <section id="work" class="work-section reveal">
@@ -78,7 +131,7 @@
         <div class="gallery-grid">
             
             <a href="pages/comic.html" class="art-card reveal-card">
-                <img src="assets/img/morty.png" alt="Riad & Ela at Morty's">
+                <img src="assets/img/morty.jpg" alt="Riad & Ela at Morty's">
                 <div class="overlay"><h3>Riad & Ela at Morty's</h3><p>Comic</p></div>
             </a>
 
@@ -93,7 +146,7 @@
             </a>
 
             <a href="pages/devperso.html" class="art-card reveal-card">
-                <img src="assets/img/riad.jpg" alt="Développement personnel">
+                <img src="assets/img/riad.png" alt="Développement personnel">
                 <div class="overlay"><h3>Développement personnel</h3><p>Mindset / Progrès</p></div>
             </a>
         </div>
@@ -102,16 +155,19 @@
     <footer id="contact" class="reveal">
         <div class="footer-content">
             <h2>I'd rather leave somewhat of a Legacy.</h2>
-            <p>Disponible pour collaboration sur projets de développement ou de design.</p>
+            <p>Disponible pour collaboration sur projets de dev ou de design.</p>
             
             <div class="social-links">
-                <a href="https://instagram.com/xo_riad" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/riad_mjamai/" target="_blank"><i class="fab fa-instagram"></i></a>
+                
+                <a href="https://www.linkedin.com/in/malki-jamai-riad-5478a7283/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                
                 <a href="https://github.com/RiadMJ" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:riad.malki.jamai@gmail.com"><i class="fas fa-envelope"></i></a>
+                
+                <a href="mailto:rmalkijamai@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
 
-            <p class="copyright">© 2025 Riad Malki Jamai. XO.</p>
+            <p class="copyright">© 2025 Riad Malki Jamai. XO. Code by Gemini.</p>
         </div>
     </footer>
 
@@ -120,28 +176,24 @@
         const burger = document.querySelector('.burger-menu');
         const navLinks = document.querySelector('.nav-links');
 
-        // Fonction Scroll Reveal
         function scrollReveal() {
             const windowHeight = window.innerHeight;
             const elementVisible = 150; 
 
             for (let i = 0; i < reveals.length; i++) {
                 let elementTop = reveals[i].getBoundingClientRect().top;
-
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
             }
         }
 
-        // Fonction Burger Menu (pour le mobile)
         burger.addEventListener('click', () => {
             navLinks.classList.toggle('nav-active');
             burger.querySelector('i').classList.toggle('fa-bars');
-            burger.querySelector('i').classList.toggle('fa-times'); // Optionnel, si vous voulez un X à la place
+            burger.querySelector('i').classList.toggle('fa-times');
         });
 
-        // Fermer le menu après un clic de lien (mobile)
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('nav-active')) {
@@ -153,7 +205,7 @@
         });
 
         window.addEventListener("scroll", scrollReveal);
-        window.addEventListener("load", scrollReveal); // Déclenche au chargement
+        window.addEventListener("load", scrollReveal);
     </script>
 
 </body>
