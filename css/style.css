@@ -229,18 +229,18 @@ section { padding: var(--section-padding); /* Utilise la variable définie tout 
 
 .personal-card h3 { 
     /* 2. AGGRANDIR LE TITRE */
-    /* Ancien : 1.8rem -> Nouveau : 2.5rem (Très gros) */
-    font-size: 2.5rem; 
+    
+    font-size: 4rem; 
     color: white; 
-    margin-bottom: 30px; /* Un peu plus d'espace sous le titre */
+    margin-bottom: 50px; /* Un peu plus d'espace sous le titre */
 }
 
 .personal-card p { 
     /* 3. AGGRANDIR LE TEXTE */
-    /* Ancien : 1.1rem -> Nouveau : 1.4rem */
-    font-size: 1.4rem; 
+    
+    font-size: 2rem; 
     color: #bbb; 
-    line-height: 1.8; /* Espace un peu plus les lignes pour la lisibilité */
+    line-height: 2; /* Espace un peu plus les lignes pour la lisibilité */
 }
 
 /* =========================================
