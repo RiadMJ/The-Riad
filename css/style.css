@@ -201,7 +201,7 @@ section { padding: var(--section-padding); /* Utilise la variable définie tout 
    ========================================= */
 .personal-grid { 
     display: grid; 
-    grid-template-columns: 1fr 1fr; /* "1fr 1fr" veut dire : 2 colonnes de taille égale */
+    grid-template-columns: 1fr 1fr; 
     gap: 40px; 
     margin-top: 120px; 
 }
@@ -209,16 +209,39 @@ section { padding: var(--section-padding); /* Utilise la variable définie tout 
 .personal-card {
     background: #111;
     border: 1px solid #222;
-    padding: 60px 40px; /* Espace à l'intérieur de la carte */
+    
+    /* 1. AGGRANDIR LA BOÎTE */
+    /* Ancien : 60px 40px -> Nouveau : 100px 60px */
+    padding: 100px 60px; 
+    
+    /* Optionnel : Forcer une hauteur minimale pour que ce soit imposant */
+    min-height: 500px; 
+    
     border-radius: 16px;
+    display: flex;             /* Ajout pour bien centrer le contenu si tu veux */
+    flex-direction: column;    /* Aligne titre et texte verticalement */
+    justify-content: center;   /* Centre le tout verticalement dans la grande case */
     transition: 0.3s;
 }
 
 /* Effet au survol de la souris */
 .personal-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
 
-.personal-card h3 { font-size: 1.8rem; color: white; margin-bottom: 25px; }
-.personal-card p { font-size: 1.1rem; color: #bbb; line-height: 1.6; }
+.personal-card h3 { 
+    /* 2. AGGRANDIR LE TITRE */
+    /* Ancien : 1.8rem -> Nouveau : 2.5rem (Très gros) */
+    font-size: 2.5rem; 
+    color: white; 
+    margin-bottom: 30px; /* Un peu plus d'espace sous le titre */
+}
+
+.personal-card p { 
+    /* 3. AGGRANDIR LE TEXTE */
+    /* Ancien : 1.1rem -> Nouveau : 1.4rem */
+    font-size: 1.4rem; 
+    color: #bbb; 
+    line-height: 1.8; /* Espace un peu plus les lignes pour la lisibilité */
+}
 
 /* =========================================
    8. PROJETS (GALLERY GRID)
