@@ -6,44 +6,214 @@
     <title>Riad Malki | Portfolio XO</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
     <style>
-        /* CSS Ajouté pour les nouveaux blocs "Passions" */
-        .personal-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        /* =========================================
+           1. VARIABLES GLOBALES
+           ========================================= */
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-color: #ff4d00;
+            --gray-text: #b3b3b3;
+            --glass-bg: rgba(10, 10, 10, 0.95);
+            --section-padding: 180px 8%; 
+            --grid-gap: 80px; 
         }
+
+        /* AJOUT PREMIUM : Couleur de sélection du texte */
+        ::selection {
+            background: var(--accent-color);
+            color: #000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* On cache le curseur par défaut pour mettre le nôtre */ }
+        
+        /* Exception : On remet le curseur normal sur mobile car pas de souris */
+        @media (max-width: 1024px) { * { cursor: auto; } }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 18px; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* AJOUT PREMIUM : Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0; left: 0; width: 0%; height: 3px;
+            background: var(--accent-color);
+            z-index: 99999;
+            box-shadow: 0 0 10px var(--accent-color);
+            transition: width 0.1s;
+        }
+
+        /* AJOUT PREMIUM : Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px; height: 8px;
+            background-color: var(--accent-color);
+        }
+        .cursor-outline {
+            width: 40px; height: 40px;
+            border: 1px solid rgba(255, 77, 0, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        /* Effet quand on survole un lien */
+        body.hovering .cursor-outline {
+            width: 70px; height: 70px;
+            background-color: rgba(255, 77, 0, 0.1);
+            border-color: transparent;
+        }
+        @media (max-width: 1024px) { .cursor-dot, .cursor-outline { display: none; } }
+
+        /* --- BACKGROUND --- */
+        .background-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #050505; }
+        .blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.35; }
+        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #600000; animation: move 30s infinite alternate; }
+        .blob-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: var(--accent-color); opacity: 0.25; }
+        @keyframes move { from { transform: translate(0,0); } to { transform: translate(50px, 50px); } }
+
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed; top: 0; width: 100%; padding: 30px 5%;
+            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+            background: var(--glass-bg); backdrop-filter: blur(10px);
+        }
+        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: 3px; text-decoration: none; color: white; }
+        .dot { color: var(--accent-color); }
+        .nav-links { list-style: none; display: flex; gap: 50px; }
+        .nav-links a { color: var(--gray-text); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .nav-links a:hover { color: white; }
+        .burger-menu { display: none; color: white; font-size: 1.5rem; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 120px 5% 50px; 
+        }
+        .hero-content { width: 50%; z-index: 10; }
+        .greeting { color: var(--accent-color); font-size: 1.1rem; letter-spacing: 4px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; display: block; }
+
+        /* AJOUT : Animation Glitch sur le Titre au Hover */
+        h1 {
+            font-size: 6vw; line-height: 1; margin-bottom: 30px; font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(120deg, #fff, #999); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            position: relative;
+            transition: 0.3s;
+        }
+        h1:hover {
+            text-shadow: 2px 2px var(--accent-color), -2px -2px #00ffff;
+            -webkit-text-fill-color: white;
+        }
+
+        .subtitle { font-size: 1.1rem; color: var(--gray-text); margin-bottom: 40px; max-width: 80%; }
+        .hero-btns { display: flex; gap: 20px; }
+        .btn-primary { 
+            padding: 18px 40px; background: var(--accent-color); color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; 
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4); }
+        .btn-secondary { 
+            padding: 18px 40px; border: 1px solid rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 50px; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; 
+        }
+        .btn-secondary:hover { background: white; color: black; }
+
+        .hero-visual { width: 45%; height: 80vh; display: flex; align-items: center; justify-content: center; }
+        .profile-img { 
+            width: 100%; height: 100%; object-fit: cover; border-radius: 20px; 
+            filter: grayscale(100%) contrast(1.1); box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+        }
+
+        /* --- SECTIONS --- */
+        section { padding: var(--section-padding); }
+        .section-title { 
+            font-size: 3.5rem; margin-bottom: 80px; font-weight: 900; text-transform: uppercase; letter-spacing: -1px;
+            border-left: 6px solid var(--accent-color); padding-left: 30px;
+        }
+
+        /* --- ABOUT --- */
+        .about-content { display: flex; gap: 100px; } 
+        .bio-text { 
+            flex: 1; font-size: 1rem; line-height: 1.7; color: var(--gray-text);
+            max-width: 500px; border-left: none; padding-left: 0;
+        }
+        .skills-grid { flex: 1; display: flex; flex-direction: column; gap: 40px; }
+        .skill-item h3 { font-size: 1.5rem; margin-bottom: 5px; color: white; font-weight: 600; }
+        .progress-bar-container {
+            width: 100%; height: 6px; background: #222; border-radius: 10px;
+            position: relative; margin-top: 35px; overflow: visible;
+        }
+        .progress-bar { 
+            height: 100%; background: var(--accent-color); border-radius: 10px; 
+            color: white; font-weight: 700; font-size: 1rem; text-align: right; 
+            position: relative; top: 0px; line-height: 1;
+        }
+
+        /* --- PERSONAL CARDS --- */
+        .personal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 120px; }
         .personal-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 30px;
-            border-radius: 12px;
-            border-left: 3px solid var(--accent-color);
-            transition: transform 0.3s ease;
+            background: #111; border: 1px solid #222; padding: 100px 60px; min-height: 500px; 
+            border-radius: 16px; display: flex; flex-direction: column; justify-content: center; transition: 0.3s;
         }
-        .personal-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
+        .personal-card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: 0 0 30px rgba(255, 77, 0, 0.1); }
+        .personal-card h3 { font-size: 3rem; color: white; margin-bottom: 80px; }
+        .personal-card p { font-size: 3rem; color: #bbb; line-height: 2; }
+
+        /* --- WORK --- */
+        .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .art-card { 
+            display: block; width: 100%; height: 500px; background: #111; 
+            border-radius: 16px; position: relative; overflow: hidden; text-decoration: none;
         }
-        .personal-card h3 {
-            color: white;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+        .art-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: grayscale(100%); }
+        .art-card:hover img { transform: scale(1.05); filter: grayscale(0%); }
+        .overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px;
+            background: linear-gradient(transparent, black);
         }
-        .personal-card p {
-            font-size: 0.95rem;
-            color: var(--gray-text);
-        }
-        /* Responsive pour les nouveaux blocs */
-        @media (max-width: 768px) {
-            .personal-grid { grid-template-columns: 1fr; }
+        .overlay h3 { font-size: 2rem; color: white; margin-bottom: 5px; }
+        .overlay p { font-size: 1rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- FOOTER --- */
+        footer { padding: 150px 5%; background: #080808; text-align: center; }
+        footer h2 { font-size: 2.5rem; margin-bottom: 30px; }
+        .social-links { display: flex; justify-content: center; gap: 40px; margin: 40px 0; }
+        .social-links a { font-size: 2rem; color: white; opacity: 0.6; transition: 0.3s; }
+        .social-links a:hover { opacity: 1; color: var(--accent-color); transform: scale(1.1); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+            .hero-content { width: 100%; }
+            .hero-visual { width: 100%; height: 500px; margin-bottom: 40px; }
+            h1 { font-size: 10vw; }
+            .about-content { flex-direction: column; gap: 60px; }
+            .bio-text { max-width: 100%; }
+            .personal-grid, .gallery-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .burger-menu { display: block; }
         }
     </style>
 </head>
 <body>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div class="scroll-progress"></div>
 
     <div class="noise-overlay"></div>
 
@@ -89,6 +259,7 @@
         <div class="about-content">
             <p class="bio-text">
                 Étudiant en ingénierie à ISIS Castres, je suis juste un petit con qui essaye d'avoir un impact positif sur le monde à travers mes créations. Et de m'en sortir aussi pour être honnête. J'aime passer du temps avec les gens que j'aime et j'aime pas coder contrairement à ce que chatgpt a écrit dans ce paragraphe avant que je changes. Je déteste l'informatique. Juste à droite, 3 barres de compétences représentantes mon niveau. En vrai là j'ai pas menti c'est un peu ma progression. 
+            </p>
             
             <div class="skills-grid">
                 <div class="skill-item">
@@ -158,11 +329,8 @@
             
             <div class="social-links">
                 <a href="https://www.instagram.com/riad_mjamai/" target="_blank"><i class="fab fa-instagram"></i></a>
-                
                 <a href="https://www.linkedin.com/in/malki-jamai-riad-5478a7283/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                
                 <a href="https://github.com/RiadMJ" target="_blank"><i class="fab fa-github"></i></a>
-                
                 <a href="mailto:rmalkijamai@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
 
@@ -174,6 +342,11 @@
         const reveals = document.querySelectorAll('.reveal, .reveal-card');
         const burger = document.querySelector('.burger-menu');
         const navLinks = document.querySelector('.nav-links');
+        
+        // AJOUT : Éléments pour le curseur
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        const scrollProgress = document.querySelector('.scroll-progress');
 
         function scrollReveal() {
             const windowHeight = window.innerHeight;
@@ -186,6 +359,37 @@
                 }
             }
         }
+
+        // AJOUT : Script pour le curseur personnalisé
+        window.addEventListener('mousemove', function(e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Le petit point suit instantanément
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Le grand cercle suit avec un léger retard (effet fluide)
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // AJOUT : Agrandir le curseur sur les liens
+        const allLinks = document.querySelectorAll('a, .art-card, .btn-primary, .btn-secondary, .burger-menu');
+        allLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            link.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        // AJOUT : Barre de progression
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = `${scrolled}%`;
+        });
 
         burger.addEventListener('click', () => {
             navLinks.classList.toggle('nav-active');
