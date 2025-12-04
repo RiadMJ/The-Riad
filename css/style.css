@@ -6,9 +6,9 @@
     --gray-text: #b3b3b3;
     --glass-bg: rgba(10, 10, 10, 0.9);
     
-    /* PARAMÈTRE PAGE ULTRA LONGUE */
-    --section-padding: 280px 8%; /* Enorme espace vertical entre les sections */
-    --grid-gap: 120px; /* Enorme espace entre les cartes */
+    /* PARAMÈTRES D'ESPACEMENT LUXE */
+    --section-padding: 280px 8%; 
+    --grid-gap: 120px; 
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,12 +56,12 @@ body {
     padding: 0 5%; 
 }
 
-.hero-content { max-width: 55%; }
+.hero-content { max-width: 50%; }
 
 .greeting { color: var(--accent-color); font-size: 1.5rem; letter-spacing: 5px; font-weight: 700; display: block; margin-bottom: 20px; }
 
 h1 {
-    font-size: 7vw; /* Un peu plus petit pour l'équilibre */
+    font-size: 7vw; 
     line-height: 0.9; margin-bottom: 40px; font-weight: 900;
     text-transform: uppercase;
     background: linear-gradient(to right, #fff, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -74,12 +74,12 @@ h1 {
 .btn-secondary { padding: 25px 60px; border: 2px solid rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 100px; font-size: 1.2rem; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
 .btn-secondary:hover { background: white; color: black; }
 
-/* MODIF: PHOTO PLUS PETITE */
-.hero-visual { width: 40%; height: 80vh; position: relative; display: flex; justify-content: flex-end; align-items: center; }
+/* MODIF: PHOTO PLUS GRANDE (Intermédiaire) */
+.hero-visual { width: 45%; height: 90vh; position: relative; display: flex; justify-content: flex-end; align-items: center; }
 .profile-img { 
     width: 100%; 
-    max-width: 380px; /* Limite la largeur pour qu'elle soit moins imposante */
-    height: 550px; /* Hauteur fixe raisonnable */
+    max-width: 550px; /* Plus large qu'avant */
+    height: 700px; /* Plus haute qu'avant */
     object-fit: cover; 
     border-radius: 40px; 
     filter: grayscale(100%) contrast(1.2); 
@@ -99,30 +99,32 @@ section { padding: var(--section-padding); }
 /* ABOUT */
 .about-content { display: flex; gap: 120px; width: 100%; }
 .bio-text { flex: 1; font-size: 1.6rem; line-height: 1.6; color: #ddd; border-left: 5px solid var(--accent-color); padding-left: 40px; }
-.skills-grid { flex: 1; display: grid; gap: 50px; }
+.skills-grid { flex: 1; display: grid; gap: 60px; }
 
 .skill-item h3 { font-size: 1.8rem; margin-bottom: 0; }
-/* MODIF: BARRES DESCENDUES ET PLUS FINES */
+/* MODIF: GROS ÉCART ENTRE LE TITRE ET LA BARRE */
 .progress-bar-container { 
-    margin-top: 25px; /* Espace pour descendre la barre */
-    height: 10px; /* Barre plus fine */
+    margin-top: 50px; /* Énorme marge au-dessus de la barre */
+    height: 10px; 
     background: #222; 
     border-radius: 10px; 
 }
 .progress-bar { height: 100%; background: var(--accent-color); border-radius: 10px; }
 
-/* MODIF: CARTES LIFESTYLE PLUS GRANDES */
+/* MODIF: CADRES LIFESTYLE & POLICE GÉANTE */
 .personal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 150px; }
 .personal-card { 
     background: #111; 
-    padding: 100px 60px; /* BEAUCOUP de padding interne */
-    min-height: 500px; /* Hauteur minimale forcée */
+    padding: 100px 60px; 
+    min-height: 500px; 
     border-radius: 30px; 
     border: 1px solid #333; 
-    display: flex; flex-direction: column; justify-content: center; /* Centre le contenu verticalement */
+    display: flex; flex-direction: column; justify-content: center;
 }
-.personal-card h3 { font-size: 2.8rem; margin-bottom: 40px; color: white; }
-.personal-card p { font-size: 1.4rem; color: #aaa; line-height: 1.8; }
+/* Titres des cadres en TRÈS GROS */
+.personal-card h3 { font-size: 3.5rem; margin-bottom: 40px; color: white; line-height: 1.1; }
+/* Texte des cadres en GROS */
+.personal-card p { font-size: 1.6rem; color: #aaa; line-height: 1.6; }
 
 /* WORK GRID */
 .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; width: 100%; }
@@ -145,7 +147,7 @@ footer h2 { font-size: 4rem; margin-bottom: 50px; }
     .hero { flex-direction: column-reverse; padding-top: 150px; text-align: center; }
     .hero-content { max-width: 100%; }
     .hero-visual { width: 100%; height: auto; justify-content: center; margin-bottom: 50px; }
-    .profile-img { width: 100%; max-width: 400px; height: 500px; }
+    .profile-img { width: 100%; max-width: 450px; height: 600px; } /* Ajusté */
     
     h1 { font-size: 12vw; }
     .about-content { flex-direction: column; }
