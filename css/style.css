@@ -1,155 +1,207 @@
-/* --- GLOBAL & RESET --- */
+/* =========================================
+   1. VARIABLES GLOBALES (LE CENTRE DE CONTRÔLE)
+   Change les couleurs ou les tailles ici pour impacter tout le site d'un coup.
+   ========================================= */
 :root {
-    --bg-color: #0a0a0a;
-    --text-color: #ffffff;
-    --accent-color: #ff4d00;
-    --gray-text: #b3b3b3;
-    --glass-bg: rgba(10, 10, 10, 0.95);
+    --bg-color: #0a0a0a;         /* Couleur de fond (Noir profond) */
+    --text-color: #ffffff;       /* Couleur du texte principal */
+    --accent-color: #ff4d00;     /* Ta couleur "Signature" (Orange The Weeknd/XO) */
+    --gray-text: #b3b3b3;        /* Couleur pour les sous-titres (gris clair) */
+    --glass-bg: rgba(10, 10, 10, 0.95); /* Fond semi-transparent pour la navbar */
     
-    /* Espacements */
+    /* Gère l'espace vide entre les sections ici */
     --section-padding: 180px 8%; 
+    
+    /* Gère l'espace entre les cartes (projets, lifestyle) */
     --grid-gap: 80px; 
 }
 
+/* Reset standard pour enlever les marges par défaut des navigateurs */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
-    font-size: 18px; /* Taille standard rétablie */
-    line-height: 1.6;
-    overflow-x: hidden;
+    font-size: 18px; /* Taille de texte de base. Augmente ce chiffre pour grossir TOUT le texte simple */
+    line-height: 1.6; /* Espace entre les lignes de texte (lisibilité) */
+    overflow-x: hidden; /* Empêche le scroll horizontal accidentel */
 }
 
-/* --- BACKGROUND --- */
-.background-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #050505; }
+/* =========================================
+   2. FOND ANIMÉ & EFFET GRAIN
+   ========================================= */
+.background-animation { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    z-index: -1; /* Met ça tout au fond derrière le contenu */
+    background: #050505; 
+}
+
+/* Les taches de couleur floues qui bougent */
 .blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.35; }
+
+/* Tache rouge foncée */
 .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #600000; animation: move 30s infinite alternate; }
+/* Tache orange XO */
 .blob-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: var(--accent-color); opacity: 0.25; }
+
+/* Animation qui fait bouger les taches doucement */
 @keyframes move { from { transform: translate(0,0); } to { transform: translate(50px, 50px); } }
 
+/* L'effet de "neige" ou grain TV par dessus tout */
 .noise-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* --- NAVBAR --- */
+/* =========================================
+   3. BARRE DE NAVIGATION (NAVBAR)
+   ========================================= */
 .navbar {
     position: fixed; top: 0; width: 100%; padding: 30px 5%;
-    display: flex; justify-content: space-between; align-items: center; z-index: 1000;
-    background: var(--glass-bg); backdrop-filter: blur(10px);
+    display: flex; justify-content: space-between; align-items: center; 
+    z-index: 1000; /* S'assure que le menu est toujours au-dessus de tout */
+    background: var(--glass-bg); backdrop-filter: blur(10px); /* Effet flou derrière le menu */
 }
-.logo { font-weight: 900; font-size: 1.5rem; letter-spacing: 3px; text-decoration: none; color: white; }
-.dot { color: var(--accent-color); }
-.nav-links { list-style: none; display: flex; gap: 50px; }
-.nav-links a { color: var(--gray-text); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; text-decoration: none; transition: 0.3s; }
-.nav-links a:hover { color: white; }
-.burger-menu { display: none; color: white; font-size: 1.5rem; }
 
-/* --- HERO SECTION --- */
+.logo { font-weight: 900; font-size: 1.5rem; letter-spacing: 3px; text-decoration: none; color: white; }
+.dot { color: var(--accent-color); /* Le point orange après RIAD */ }
+
+.nav-links { list-style: none; display: flex; gap: 50px; /* Espace entre les liens du menu */ }
+.nav-links a { 
+    color: var(--gray-text); 
+    font-size: 0.9rem; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-weight: 600; 
+    text-decoration: none; 
+    transition: 0.3s; /* Animation fluide au survol */
+}
+.nav-links a:hover { color: white; } /* Devient blanc quand on passe la souris */
+
+.burger-menu { display: none; color: white; font-size: 1.5rem; } /* Caché sur PC, visible sur mobile */
+
+/* =========================================
+   4. HERO SECTION (L'ACCUEIL)
+   ========================================= */
 .hero {
-    min-height: 100vh; 
+    min-height: 100vh; /* Prend au moins 100% de la hauteur de l'écran */
     display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
+    align-items: center; /* Centre verticalement */
+    justify-content: space-between; /* Ecarte le texte à gauche et l'image à droite */
     padding: 120px 5% 50px; 
 }
 
 .hero-content { width: 50%; z-index: 10; }
 
+/* Le petit texte "HERE I AM" au dessus du nom */
 .greeting { color: var(--accent-color); font-size: 1.1rem; letter-spacing: 4px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; display: block; }
 
+/* LE GROS TITRE (RIAD MALKI) */
 h1 {
-    font-size: 6vw; /* Grand titre responsive */
+    font-size: 6vw; /* "vw" veut dire que la taille dépend de la largeur de l'écran (Responsive) */
     line-height: 1; margin-bottom: 30px; font-weight: 900;
     text-transform: uppercase;
+    /* Création du dégradé de blanc vers gris sur le texte */
     background: linear-gradient(120deg, #fff, #999); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
 .subtitle { font-size: 1.1rem; color: var(--gray-text); margin-bottom: 40px; max-width: 80%; }
 
+/* Les boutons */
 .hero-btns { display: flex; gap: 20px; }
-.btn-primary { padding: 18px 40px; background: var(--accent-color); color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4); }
-.btn-secondary { padding: 18px 40px; border: 1px solid rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 50px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
+.btn-primary { 
+    padding: 18px 40px; background: var(--accent-color); color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; 
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4); } /* Effet de levée au survol */
+
+.btn-secondary { 
+    padding: 18px 40px; border: 1px solid rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 50px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; 
+}
 .btn-secondary:hover { background: white; color: black; }
 
-/* PHOTO */
+/* PHOTO DE PROFIL */
 .hero-visual { width: 45%; height: 80vh; display: flex; align-items: center; justify-content: center; }
 .profile-img { 
-    width: 100%; height: 100%; object-fit: cover; 
+    width: 100%; height: 100%; object-fit: cover; /* Remplit le cadre sans déformer */
     border-radius: 20px; 
-    filter: grayscale(100%) contrast(1.1); 
-    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    filter: grayscale(100%) contrast(1.1); /* Rend l'image noir et blanc */
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7); /* L'ombre portée sous l'image */
 }
 .aura-glow { display: none; }
 
-/* --- SECTIONS --- */
-section { padding: var(--section-padding); }
+/* =========================================
+   5. SECTIONS GÉNÉRALES
+   ========================================= */
+section { padding: var(--section-padding); /* Utilise la variable définie tout en haut */ }
 
 .section-title { 
     font-size: 3.5rem; margin-bottom: 80px; font-weight: 900; text-transform: uppercase; letter-spacing: -1px;
-    border-left: 6px solid var(--accent-color); padding-left: 30px;
+    border-left: 6px solid var(--accent-color); padding-left: 30px; /* La barre orange à gauche du titre */
 }
 
-/* --- ABOUT & SKILLS --- */
-.about-content { display: flex; gap: 100px; } 
+/* =========================================
+   6. SECTION À PROPOS & SKILLS
+   ========================================= */
+.about-content { display: flex; gap: 100px; /* Espace entre le texte bio et les barres */ } 
 
-/* CORRECTION 1: TEXTE PROFIL RÉTRÉCI */
+/* Le texte de description */
 .bio-text { 
     flex: 1;
-    font-size: 2rem; /* Taille normale */
+    font-size: 2rem; /* Taille du texte "À propos" */
     line-height: 1.7; 
     color: var(--gray-text);
-    max-width: 500px; /* Largeur limitée pour faire "bloc compact" */
+    max-width: 500px; 
     border-left: none; padding-left: 0;
 }
 
-.skills-grid { 
-    flex: 1;
-    display: flex; flex-direction: column; gap: 40px;
-}
+.skills-grid { flex: 1; display: flex; flex-direction: column; gap: 40px; }
 
+/* Titre des compétences (Java, Python...) */
 .skill-item h3 { 
     font-size: 1.2rem; 
-    margin-bottom: 5px; /* Rapproché de la barre */
+    margin-bottom: 5px; 
     color: white;
     font-weight: 600;
 }
 
-/* CORRECTION 2: BARRES DE PROGRESSION FIXED */
+/* --- PARTIE COMPLIQUÉE : LES BARRES DE PROGRESSION --- */
+
+/* Le fond gris de la barre (le rail) */
 .progress-bar-container {
     width: 100%; 
-    height: 6px; /* Barre fine et élégante */
+    height: 6px; /* Épaisseur de la barre */
     background: #222; 
     border-radius: 10px;
     position: relative;
-    margin-top: 35px; /* Espace vital pour le texte au-dessus */
-    overflow: visible; /* CRUCIAL: Permet au texte de sortir du cadre */
+    margin-top: 35px; /* Pousse la barre vers le bas pour laisser place au pourcentage au-dessus */
+    overflow: visible; /* TRES IMPORTANT : Permet au texte de sortir du cadre sans être coupé */
 }
 
+/* La partie orange qui se remplit */
 .progress-bar { 
     height: 100%; 
     background: var(--accent-color); 
     border-radius: 10px; 
     
-    /* Le texte (Pourcentage) */
+    /* Style du pourcentage (85%, 70%...) */
     color: white; 
     font-weight: 700;
     font-size: 1rem;
-    text-align: right;
+    text-align: right; /* Colle le texte à la fin de la barre orange */
     
-    /* Positionnement Absolu du texte par rapport à la barre */
+    /* C'est ICI qu'on fait flotter le texte */
     position: relative; 
-    top: -60px; /* Remonte le texte de 30px au-dessus de la barre */
+    top: -60px; /* Valeur négative = monte le texte de 60px vers le haut */
     line-height: 1;
 }
 
-/* --- LIFESTYLE & CHELSEA (GRANDS BLOCS) --- */
+/* =========================================
+   7. LIFESTYLE & CHELSEA (LES CARTES)
+   ========================================= */
 .personal-grid { 
     display: grid; 
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr; /* "1fr 1fr" veut dire : 2 colonnes de taille égale */
     gap: 40px; 
     margin-top: 120px; 
 }
@@ -157,64 +209,69 @@ section { padding: var(--section-padding); }
 .personal-card {
     background: #111;
     border: 1px solid #222;
-    padding: 60px 40px; 
+    padding: 60px 40px; /* Espace à l'intérieur de la carte */
     border-radius: 16px;
     transition: 0.3s;
 }
 
+/* Effet au survol de la souris */
 .personal-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
 
-.personal-card h3 {
-    font-size: 1.8rem; 
-    color: white;
-    margin-bottom: 25px;
-}
+.personal-card h3 { font-size: 1.8rem; color: white; margin-bottom: 25px; }
+.personal-card p { font-size: 1.1rem; color: #bbb; line-height: 1.6; }
 
-.personal-card p {
-    font-size: 1.1rem; 
-    color: #bbb;
-    line-height: 1.6;
-}
-
-/* --- WORK SECTION --- */
+/* =========================================
+   8. PROJETS (GALLERY GRID)
+   ========================================= */
 .gallery-grid { 
     display: grid; 
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr; /* 2 colonnes */
     gap: 50px; 
 }
 
 .art-card { 
-    display: block; width: 100%; height: 500px; 
+    display: block; width: 100%; height: 500px; /* Hauteur fixe des images */
     background: #111; border-radius: 16px; position: relative; overflow: hidden; text-decoration: none;
 }
 
 .art-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: grayscale(100%); }
-.art-card:hover img { transform: scale(1.05); filter: grayscale(0%); }
+.art-card:hover img { transform: scale(1.05); filter: grayscale(0%); /* L'image reprend ses couleurs au survol */ }
 
+/* Le texte qui apparaît par-dessus l'image */
 .overlay {
     position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px;
-    background: linear-gradient(transparent, black);
+    background: linear-gradient(transparent, black); /* Dégradé noir pour lisibilité */
 }
 
 .overlay h3 { font-size: 2rem; color: white; margin-bottom: 5px; }
 .overlay p { font-size: 1rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 2px; }
 
-/* --- FOOTER --- */
+/* =========================================
+   9. FOOTER
+   ========================================= */
 footer { padding: 150px 5%; background: #080808; text-align: center; }
 footer h2 { font-size: 2.5rem; margin-bottom: 30px; }
 .social-links { display: flex; justify-content: center; gap: 40px; margin: 40px 0; }
 .social-links a { font-size: 2rem; color: white; opacity: 0.6; transition: 0.3s; }
 .social-links a:hover { opacity: 1; color: var(--accent-color); }
 
-/* --- RESPONSIVE --- */
+/* =========================================
+   10. RESPONSIVE (POUR TABLETTES ET MOBILES)
+   Tout ce qui est ici ne s'applique que si l'écran fait moins de 1024px de large
+   ========================================= */
 @media (max-width: 1024px) {
+    /* On passe les sections flexibles en colonnes (l'un sous l'autre au lieu de côte à côte) */
     .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
     .hero-content { width: 100%; }
     .hero-visual { width: 100%; height: 500px; margin-bottom: 40px; }
-    h1 { font-size: 10vw; }
+    h1 { font-size: 10vw; } /* Titre encore plus gros sur mobile pour impact */
+    
     .about-content { flex-direction: column; gap: 60px; }
     .bio-text { max-width: 100%; }
+    
+    /* On passe les grilles de 2 colonnes à 1 colonne */
     .personal-grid, .gallery-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
+    
+    .nav-links { display: none; } /* On cache les liens pour afficher le burger menu */
     .burger-menu { display: block; }
 }
