@@ -148,7 +148,7 @@ section { padding: var(--section-padding); /* Utilise la variable définie tout 
 /* Le texte de description */
 .bio-text { 
     flex: 1;
-    font-size: 1.5rem; /* Taille du texte "À propos" */
+    font-size: 1rem; /* Taille du texte "À propos" */
     line-height: 1.7; 
     color: var(--gray-text);
     max-width: 500px; 
