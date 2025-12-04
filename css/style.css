@@ -6,7 +6,7 @@
     --gray-text: #b3b3b3;
     --glass-bg: rgba(10, 10, 10, 0.9);
     
-    /* PARAMÈTRES D'ESPACEMENT LUXE */
+    /* PARAMÈTRES D'ESPACEMENT & LUXE */
     --section-padding: 280px 8%; 
     --grid-gap: 120px; 
 }
@@ -74,12 +74,12 @@ h1 {
 .btn-secondary { padding: 25px 60px; border: 2px solid rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 100px; font-size: 1.2rem; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
 .btn-secondary:hover { background: white; color: black; }
 
-/* MODIF: PHOTO PLUS GRANDE (Intermédiaire) */
+/* MODIF: PHOTO PLUS IMPOSANTE */
 .hero-visual { width: 45%; height: 90vh; position: relative; display: flex; justify-content: flex-end; align-items: center; }
 .profile-img { 
     width: 100%; 
-    max-width: 550px; /* Plus large qu'avant */
-    height: 700px; /* Plus haute qu'avant */
+    max-width: 500px; /* Plus large */
+    height: 650px; /* Plus haute */
     object-fit: cover; 
     border-radius: 40px; 
     filter: grayscale(100%) contrast(1.2); 
@@ -102,29 +102,57 @@ section { padding: var(--section-padding); }
 .skills-grid { flex: 1; display: grid; gap: 60px; }
 
 .skill-item h3 { font-size: 1.8rem; margin-bottom: 0; }
-/* MODIF: GROS ÉCART ENTRE LE TITRE ET LA BARRE */
+
+/* MODIF: BARRES DE PROGRESSION & POURCENTAGES */
 .progress-bar-container { 
-    margin-top: 50px; /* Énorme marge au-dessus de la barre */
+    margin-top: 40px; /* Espace au-dessus */
     height: 10px; 
     background: #222; 
     border-radius: 10px; 
+    overflow: visible; /* ESSENTIEL pour voir le texte flotter au-dessus */
 }
-.progress-bar { height: 100%; background: var(--accent-color); border-radius: 10px; }
+
+.progress-bar { 
+    height: 100%; 
+    background: var(--accent-color); 
+    border-radius: 10px; 
+    
+    /* Styling du texte à l'intérieur (le pourcentage) */
+    color: white;
+    font-weight: 700;
+    font-size: 1.4rem; /* Pourcentage bien gros */
+    text-align: right; /* Aligne le texte à la fin de la barre orange */
+    white-space: nowrap;
+    
+    /* Positionnement MAGIQUE pour sortir le texte */
+    position: relative;
+    top: -45px; /* Fait remonter le texte AU-DESSUS de la barre */
+    line-height: 1;
+}
 
 /* MODIF: CADRES LIFESTYLE & POLICE GÉANTE */
 .personal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 150px; }
 .personal-card { 
     background: #111; 
-    padding: 100px 60px; 
+    padding: 80px 50px; 
     min-height: 500px; 
     border-radius: 30px; 
     border: 1px solid #333; 
     display: flex; flex-direction: column; justify-content: center;
 }
-/* Titres des cadres en TRÈS GROS */
-.personal-card h3 { font-size: 3.5rem; margin-bottom: 40px; color: white; line-height: 1.1; }
-/* Texte des cadres en GROS */
-.personal-card p { font-size: 1.6rem; color: #aaa; line-height: 1.6; }
+/* Titres des cadres */
+.personal-card h3 { 
+    font-size: 3rem; /* TRES GROS */
+    margin-bottom: 30px; 
+    color: white; 
+    line-height: 1.1; 
+}
+/* Texte à l'intérieur des cadres */
+.personal-card p { 
+    font-size: 1.8rem; /* TRES GROS aussi pour le corps du texte */
+    color: #bbb; 
+    line-height: 1.6; 
+}
 
 /* WORK GRID */
 .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; width: 100%; }
@@ -147,7 +175,7 @@ footer h2 { font-size: 4rem; margin-bottom: 50px; }
     .hero { flex-direction: column-reverse; padding-top: 150px; text-align: center; }
     .hero-content { max-width: 100%; }
     .hero-visual { width: 100%; height: auto; justify-content: center; margin-bottom: 50px; }
-    .profile-img { width: 100%; max-width: 450px; height: 600px; } /* Ajusté */
+    .profile-img { width: 100%; max-width: 450px; height: 600px; }
     
     h1 { font-size: 12vw; }
     .about-content { flex-direction: column; }
