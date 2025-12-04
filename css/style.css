@@ -192,7 +192,7 @@ section { padding: var(--section-padding); /* Utilise la variable définie tout 
     
     /* C'est ICI qu'on fait flotter le texte */
     position: relative; 
-    top: -120px; /* Valeur négative = monte le texte de 60px vers le haut */
+    top: 0px; /* Valeur négative = monte le texte de 60px vers le haut */
     line-height: 1;
 }
 
