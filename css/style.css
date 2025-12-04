@@ -230,7 +230,7 @@ section { padding: var(--section-padding); /* Utilise la variable définie tout 
 .personal-card h3 { 
     /* 2. AGGRANDIR LE TITRE */
     
-    font-size: 6rem; 
+    font-size: 3rem; 
     color: white; 
     margin-bottom: 80px; /* Un peu plus d'espace sous le titre */
 }
@@ -238,7 +238,7 @@ section { padding: var(--section-padding); /* Utilise la variable définie tout 
 .personal-card p { 
     /* 3. AGGRANDIR LE TEXTE */
     
-    font-size: 4rem; 
+    font-size: 3rem; 
     color: #bbb; 
     line-height: 2; /* Espace un peu plus les lignes pour la lisibilité */
 }
