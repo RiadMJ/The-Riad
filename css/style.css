@@ -99,7 +99,7 @@ section { padding: var(--section-padding); }
 /* CORRECTION 1: TEXTE PROFIL RÉTRÉCI */
 .bio-text { 
     flex: 1;
-    font-size: 1rem; /* Taille normale */
+    font-size: 2rem; /* Taille normale */
     line-height: 1.7; 
     color: var(--gray-text);
     max-width: 500px; /* Largeur limitée pour faire "bloc compact" */
@@ -142,7 +142,7 @@ section { padding: var(--section-padding); }
     
     /* Positionnement Absolu du texte par rapport à la barre */
     position: relative; 
-    top: -30px; /* Remonte le texte de 30px au-dessus de la barre */
+    top: -60px; /* Remonte le texte de 30px au-dessus de la barre */
     line-height: 1;
 }
 
